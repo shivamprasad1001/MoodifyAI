@@ -1,0 +1,140 @@
+<!-- <!DOCTYPE html>
+<html>
+<body>
+    <h1>Recommended Songs for {{ emotion }}</h1>
+    <ul>
+    {% for song in songs %}
+        <li><a href="{{ song.url }}" target="_blank">{{ song.name }} by {{ song.artist }}</a></li>
+    {% endfor %}
+    </ul>
+    <a href="/">Go Back</a>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emotion-Based Music - Results</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #9333ea, #3b82f6);
+            color: white;
+        }
+
+        h1 {
+            margin-top: 50px;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        .results-container {
+            margin: 50px auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            width: 60%;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .emotion-display {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            font-weight: bold;
+            color: #fbbf24;
+        }
+
+        
+
+        .home-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #f43f5e;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.2em;
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: background 0.3s ease-in-out;
+            text-decoration: none;
+        }
+
+        .home-button:hover {
+            background: #ec4899;
+        }
+        .footer-mark{
+            text-decoration: none;
+            color: #ec4899;
+        }
+        a{
+            text-decoration: none;
+        }
+        
+.song-card {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    gap: 1rem;
+    padding: 1rem;
+    background: rgba(101, 96, 96, 0.315);
+    border-radius: 0.5rem;
+    transition: background-color 0.3s;
+}
+.song-image {
+    width: 60px;
+    height: 60px;
+    border-radius: 0.375rem;
+    overflow: hidden;
+}
+.song-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.song-info {
+    flex-grow: 1;
+}
+.song-name {
+    font-weight: 600;
+    color: white;
+    margin-bottom: 0.25rem;
+}
+.song-artist {
+    color: rgba(197, 186, 186, 0.877);
+    font-size: 0.875rem;
+}
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">MoodifyAI</h1>
+    <div class="results-container">
+        <div class="emotion-display">
+            <h1>Recommended Songs for <span id="emotion">{{ emotion }}</span></h1>
+        </div>
+            {% for song in songs %}
+            <a href="{{song.url}}">
+                <div class="song-card">
+                    <div class="song-image">
+                        <img src="{{song.image_url}}" alt="{{song.image_url}}">
+
+                    </div>
+                    <div class="song-info">
+                        <div class="song-name">{{ song.name }}</div>
+                        <div class="song-artist">{{ song.artist }}</div>
+
+                    </div>
+                </div>
+            </a>
+            {% endfor %}
+        <a href="/" class="home-button">🔙 Go Back</a>
+
+    </div>
+    <footer>
+        <p style="text-align: center;">&copy; 2024 <a href="#" class="footer-mark">MoodifyAI</a>. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

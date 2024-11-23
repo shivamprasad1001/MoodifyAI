@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MoodifyAI</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #3b82f6, #9333ea);
+            color: white;
+            text-align: center;
+        }
+
+        h1 {
+            margin-top: 50px;
+            font-size: 3em;
+            font-weight: bold;
+        }
+
+        p {
+            font-size: 1.2em;
+            margin-top: 10px;
+        }
+
+        .upload-container {
+            margin: 50px auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            width: 50%;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .upload-container input {
+            display: none;
+        }
+
+        .upload-box {
+            border-radius: 15px;
+            padding: 30px;
+            cursor: pointer;
+            transition: border-color 0.3s ease-in-out;
+        }
+
+        .upload-box:hover {
+            border-color: rgba(255, 255, 255, 0.8);
+        }
+        #upload-icon{
+            width: 50px;
+            padding: 20px 80px;
+            border: 2px dashed white;
+            border-radius: 20px;
+            margin-bottom: 10px;
+        }
+       
+
+        #imagePreview {
+            display: none;
+            margin-top: 20px;
+            max-width: 50%;
+            max-height: 150px;
+            border-radius: 10px;
+        }
+
+        .button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #f43f5e;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.2em;
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: background 0.3s ease-in-out;
+        }
+
+        .button:hover {
+            background: #ec4899;
+        }
+
+        .features {
+            margin-top: 50px;
+            display: flex;
+            margin-bottom: 30px;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .feature-box {
+            width: 25%;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .feature-box h3 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        .footer-mark{
+            text-decoration: none;
+            color: #ec4899;
+        }
+        #about-btn{
+            float: right;
+            text-decoration: none;
+            margin-right: 50px;
+            position: relative;
+            color: whitesmoke;
+            font-weight: bold;
+        }
+        #getMusic{
+
+        }
+    </style>
+</head>
+<body>
+    <a href="{{ url_for('about') }}" id="about-btn">About us</a>
+    <h1>MoodifyAI</h1>
+    <p>Upload a photo and let us recommend the perfect music for your mood</p>
+
+    <div class="upload-container">
+        <form action="/recommend" method="post" enctype="multipart/form-data">
+            <label class="upload-box" for="file">
+                <p>Drag and drop your image here, or <u>browse</u></p>
+                <p style="font-size: 0.8em;">Supports: JPG, PNG, GIF (Max 10MB)</p>
+                <img src="https://img.icons8.com/ios-filled/50/ffffff/upload-to-cloud.png" alt="Upload" id ="upload-icon">
+                <input type="file" id="file" name="file">
+                
+                
+            </label>
+            <center><img id="imagePreview" alt="Image Preview"></center>
+            
+            <button class="button" type="submit" id="getMusic" disabled>🎵 Get Music Recommendations</button>
+        </form>
+    </div>
+
+    <div class="features">
+        <div class="feature-box">
+            <h3>Emotion Detection</h3>
+            <p>Advanced AI analyzes your photo's emotional content.</p>
+        </div>
+        <div class="feature-box">
+            <h3>Personalized Music</h3>
+            <p>Get curated songs that match your mood perfectly.</p>
+        </div>
+        <div class="feature-box">
+            <h3>Instant Results</h3>
+            <p>See your music recommendations in seconds.</p>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2024 <a href="#" class="footer-mark">MoodifyAI</a>. All rights reserved.</p>
+    </footer>
+</body>
+<script>
+    const fileInput = document.getElementById('file');
+    const imagePreview = document.getElementById('imagePreview');
+    const getMusicBtn = document.getElementById('getMusic');
+    getMusicBtn.style.cursor = 'no-drop';
+
+    fileInput.addEventListener('change', function () {
+        const file = this.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (event) {
+                imagePreview.src = event.target.result;
+                imagePreview.style.display = 'block';
+                getMusicBtn.disabled = false;
+                getMusicBtn.style.cursor = 'pointer';
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+</script>
+</html>
