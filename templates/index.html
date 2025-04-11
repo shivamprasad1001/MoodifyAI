@@ -7,30 +7,42 @@
     <style>
         body {
             margin: 0;
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #3b82f6, #9333ea);
             color: white;
             text-align: center;
+            min-height: 100vh;
         }
 
         h1 {
             margin-top: 50px;
             font-size: 3em;
             font-weight: bold;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
 
         p {
             font-size: 1.2em;
             margin-top: 10px;
+            opacity: 0.9;
         }
 
         .upload-container {
             margin: 50px auto;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
             width: 50%;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .upload-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
         }
 
         .upload-container input {
@@ -39,82 +51,167 @@
 
         .upload-box {
             border-radius: 15px;
-            padding: 30px;
+            padding: 40px 20px;
             cursor: pointer;
-            transition: border-color 0.3s ease-in-out;
+            transition: all 0.3s ease;
         }
 
-        .upload-box:hover {
-            border-color: rgba(255, 255, 255, 0.8);
+        
+
+        #upload-icon {
+            width: 60px;
+            height: 60px;
+            padding: 25px;
+            border: 2px dashed rgba(255, 255, 255, 0.7);
+            border-radius: 50%;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
         }
-        #upload-icon{
-            width: 50px;
-            padding: 20px 80px;
-            border: 2px dashed white;
-            border-radius: 20px;
-            margin-bottom: 10px;
+
+        .upload-box:hover #upload-icon {
+            transform: scale(1.05);
+            border-color: white;
         }
-       
 
         #imagePreview {
             display: none;
-            margin-top: 20px;
-            max-width: 50%;
-            max-height: 150px;
-            border-radius: 10px;
+            margin: 25px auto;
+            max-width: 60%;
+            max-height: 200px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            border: 2px solid white;
+            object-fit: cover;
         }
 
         .button {
-            margin-top: 20px;
-            padding: 10px 20px;
-            background: #f43f5e;
+            margin-top: 25px;
+            padding: 12px 30px;
+            background: linear-gradient(45deg, #f43f5e, #ec4899);
             border: none;
-            border-radius: 25px;
+            border-radius: 30px;
             font-size: 1.2em;
+            font-weight: 600;
             color: white;
             cursor: pointer;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            transition: background 0.3s ease-in-out;
+            box-shadow: 0 4px 15px rgba(244, 63, 94, 0.4);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
 
         .button:hover {
-            background: #ec4899;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(244, 63, 94, 0.6);
+        }
+
+        .button:active {
+            transform: translateY(0);
+        }
+
+        .button:disabled {
+            background: #6b7280;
+            box-shadow: none;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .button:disabled:hover {
+            box-shadow: none;
         }
 
         .features {
-            margin-top: 50px;
+            margin: 60px auto;
             display: flex;
-            margin-bottom: 30px;
+            flex-wrap: wrap;
             justify-content: center;
-            gap: 20px;
+            gap: 30px;
+            max-width: 1200px;
+            padding: 0 20px;
         }
 
         .feature-box {
-            width: 25%;
-            padding: 20px;
+            width: 250px;
+            padding: 25px;
             background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
             border-radius: 15px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+        }
+
+        .feature-box:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
         }
 
         .feature-box h3 {
             font-size: 1.5em;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+            color: #fff;
         }
-        .footer-mark{
+
+        .feature-box p {
+            font-size: 1em;
+            opacity: 0.8;
+        }
+
+        .footer-mark {
             text-decoration: none;
+            color: #fff;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .footer-mark:hover {
             color: #ec4899;
         }
-        #about-btn{
+
+        #about-btn {
             float: right;
             text-decoration: none;
-            margin-right: 50px;
+            margin: 30px;
+            color: white;
+            font-weight: 600;
+            padding: 8px 20px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
             position: relative;
-            color: whitesmoke;
-            font-weight: bold;
         }
-        #getMusic{
 
+        #about-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        footer {
+            padding: 20px;
+            margin-top: 202px;
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        .file-info {
+            margin-top: 15px;
+            font-size: 0.9em;
+            opacity: 0.8;
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .upload-container {
+                width: 80%;
+                padding: 20px;
+            }
+            
+            .features {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .feature-box {
+                width: 80%;
+            }
         }
     </style>
 </head>
@@ -126,15 +223,13 @@
     <div class="upload-container">
         <form action="/recommend" method="post" enctype="multipart/form-data">
             <label class="upload-box" for="file">
+                <img src="https://img.icons8.com/ios-filled/50/ffffff/upload-to-cloud.png" alt="Upload" id="upload-icon">
                 <p>Drag and drop your image here, or <u>browse</u></p>
-                <p style="font-size: 0.8em;">Supports: JPG, PNG, GIF (Max 10MB)</p>
-                <img src="https://img.icons8.com/ios-filled/50/ffffff/upload-to-cloud.png" alt="Upload" id ="upload-icon">
-                <input type="file" id="file" name="file">
-                
-                
+                <p style="font-size: 0.9em; margin-top: 5px;">Supports: JPG, PNG, GIF (Max 10MB)</p>
+                <div id="fileInfo" class="file-info"></div>
+                <input type="file" id="file" name="file" accept="image/jpeg, image/png, image/gif">
             </label>
-            <center><img id="imagePreview" alt="Image Preview"></center>
-            
+            <img id="imagePreview" alt="Image Preview">
             <button class="button" type="submit" id="getMusic" disabled>🎵 Get Music Recommendations</button>
         </form>
     </div>
@@ -142,7 +237,7 @@
     <div class="features">
         <div class="feature-box">
             <h3>Emotion Detection</h3>
-            <p>Advanced AI analyzes your photo's emotional content.</p>
+            <p>Advanced AI analyzes your photo's emotional content with precision.</p>
         </div>
         <div class="feature-box">
             <h3>Personalized Music</h3>
@@ -154,27 +249,67 @@
         </div>
     </div>
     <footer>
-        <p>&copy; 2024 <a href="#" class="footer-mark">MoodifyAI</a>. All rights reserved.</p>
+        <p>&copy; 2025 <a href="#" class="footer-mark">MoodifyAI</a>. All rights reserved.</p>
     </footer>
-</body>
-<script>
-    const fileInput = document.getElementById('file');
-    const imagePreview = document.getElementById('imagePreview');
-    const getMusicBtn = document.getElementById('getMusic');
-    getMusicBtn.style.cursor = 'no-drop';
 
-    fileInput.addEventListener('change', function () {
-        const file = this.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = function (event) {
-                imagePreview.src = event.target.result;
-                imagePreview.style.display = 'block';
-                getMusicBtn.disabled = false;
-                getMusicBtn.style.cursor = 'pointer';
-            };
-            reader.readAsDataURL(file);
-        }
-    });
-</script>
+    <script>
+        const fileInput = document.getElementById('file');
+        const imagePreview = document.getElementById('imagePreview');
+        const getMusicBtn = document.getElementById('getMusic');
+        const fileInfo = document.getElementById('fileInfo');
+        const uploadBox = document.querySelector('.upload-box');
+
+        // Handle file selection
+        fileInput.addEventListener('change', function () {
+            const file = this.files[0];
+            if (file) {
+                // Show file info
+                fileInfo.style.display = 'block';
+                fileInfo.innerHTML = `
+                    <strong>${file.name}</strong><br>
+                    ${(file.size / 1024 / 1024).toFixed(2)} MB
+                `;
+
+                // Preview image
+                const reader = new FileReader();
+                reader.onload = function (event) {
+                    imagePreview.src = event.target.result;
+                    imagePreview.style.display = 'block';
+                    getMusicBtn.disabled = false;
+                    
+                    // Adjust upload box appearance when image is selected
+                    uploadBox.style.padding = '20px';
+                    uploadBox.querySelector('p:first-of-type').style.display = 'none';
+                    uploadBox.querySelector('p:last-of-type').style.display = 'none';
+                    document.getElementById('upload-icon').style.display = 'none';
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Drag and drop functionality
+        uploadBox.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadBox.style.background = 'rgba(255, 255, 255, 0.2)';
+            uploadBox.style.border = '2px dashed white';
+        });
+
+        uploadBox.addEventListener('dragleave', () => {
+            uploadBox.style.background = '';
+            uploadBox.style.border = '';
+        });
+
+        uploadBox.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadBox.style.background = '';
+            uploadBox.style.border = '';
+            
+            if (e.dataTransfer.files.length) {
+                fileInput.files = e.dataTransfer.files;
+                const event = new Event('change');
+                fileInput.dispatchEvent(event);
+            }
+        });
+    </script>
+</body>
 </html>

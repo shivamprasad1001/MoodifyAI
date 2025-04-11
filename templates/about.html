@@ -4,137 +4,340 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us - MoodifyAI</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        :root {
+            --primary: #3b82f6;
+            --secondary: #9333ea;
+            --accent: #ec4899;
+            --text: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.8);
+            --card-bg: rgba(255, 255, 255, 0.1);
+        }
+        
         body {
             margin: 0;
-            font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #3b82f6, #9333ea);
-            color: white;
-            text-align: center;
-            padding: 20px;
-        }
-
-        header {
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 10px;
-            margin-bottom: 40px;
-        }
-
-        h1 {
-            font-size: 3em;
-            margin: 0;
-        }
-
-        section {
-            margin-bottom: 40px;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        }
-
-        section h2 {
-            font-size: 2em;
-            margin-bottom: 15px;
-        }
-
-        section p {
-            font-size: 1.2em;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--text);
+            min-height: 100vh;
             line-height: 1.6;
         }
 
-        footer {
-            margin-top: 40px;
-            font-size: 0.9em;
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
         }
 
-        .developer {
-            margin-top: 20px;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 10px;
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
         }
 
-        .developer h3 {
-            font-size: 1.8em;
-            margin-bottom: 10px;
-        }
-
-        .developer p {
-            font-size: 1em;
-            margin-bottom: 5px;
-        }
-
-        .contact {
-            margin-top: 20px;
-            padding: 10px;
-            background: #f43f5e;
-            border: none;
-            border-radius: 25px;
-            font-size: 1.2em;
-            color: white;
-            cursor: pointer;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            transition: background 0.3s ease-in-out;
-        }
-
-        .contact:hover {
-            background: #ec4899;
-        }
         .home-button {
-            float: left;
-            margin-top: 20px;
-            padding: 10px 20px;
-            background: #f43f5d00;
-            border: none;
-            border-radius: 15px;
-            font-size: 1.2em;
+            position: absolute;
+            left: 0;
+            top: 0;
+            padding: 0.8rem 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50px;
+            font-size: 1rem;
             color: white;
             cursor: pointer;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2), inset 0 4px 10px rgba(255, 255, 255, 0.2);
-            transition: background 0.3s ease-in-out;
-            transition: border-radius 0.5s ease-in-out;
-
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
             text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            z-index: 10;
         }
 
         .home-button:hover {
-            background: #ffffff10;
-            border-radius: 25px;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(-5px);
+        }
 
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.532), inset 0 4px 10px rgba(255, 255, 255, 0.393);
+        .home-button i {
+            transition: transform 0.3s ease;
+        }
 
+        .home-button:hover i {
+            transform: translateX(-3px);
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin: 1rem 0 0.5rem;
+            background: linear-gradient(to right, #fbbf24, var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        section {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: white;
+            position: relative;
+            display: inline-block;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(to right, var(--accent), #f59e0b);
+            border-radius: 3px;
+        }
+
+        p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .developer-section {
+            text-align: center;
+            padding: 2.5rem;
+            background: linear-gradient(135deg, rgba(236, 72, 153, 0.1), rgba(59, 130, 246, 0.1));
+        }
+
+        .developer-card {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: var(--card-bg);
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .developer-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid rgba(255, 255, 255, 0.2);
+            margin: 0 auto 1.5rem;
+            display: block;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            margin: 0.5rem 0;
+            color: white;
+        }
+
+        .developer-title {
+            color: #fbbf24;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .contact-button {
+            padding: 0.8rem 2rem;
+            background: linear-gradient(45deg, var(--accent), #f59e0b);
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(244, 63, 94, 0.4);
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .contact-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(244, 63, 94, 0.6);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 1.5rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .footer-mark {
+            color: var(--accent);
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        section, .developer-card {
+            animation: fadeIn 0.6s ease forwards;
+        }
+
+        section:nth-child(2) { animation-delay: 0.1s; }
+        section:nth-child(3) { animation-delay: 0.2s; }
+        .developer-section { animation-delay: 0.3s; }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1.5rem;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+                margin-top: 2rem;
+            }
+            
+            .home-button {
+                position: relative;
+                margin-bottom: 1.5rem;
+            }
+            
+            section {
+                padding: 1.5rem;
+            }
+            
+            .developer-card {
+                padding: 1.5rem;
+            }
         }
     </style>
 </head>
 <body>
-    <header>
-        <a href="/" class="home-button">🔙 Go Back</a>
-        <h1>About Us</h1>
-        <p>Learn more about MoodifyAI, our mission, and the developer behind it.</p>
-    </header>
+    <div class="container">
+        <header>
+            <a href="/" class="home-button">
+                <i class="fas fa-arrow-left"></i> Back
+            </a>
+            <h1>About MoodifyAI</h1>
+            <p class="subtitle">Discover the story behind our emotion-powered music recommendation system</p>
+        </header>
 
-    <section>
-        <h2>How It Works</h2>
-        <p>MoodifyAI leverages advanced AI techniques to analyze the emotions in a user's uploaded photo. Once the emotion is detected, our algorithm maps it to a curated playlist of songs that match the user's mood. Whether you're feeling happy, sad, angry, or relaxed, MoodifyAI aims to connect your emotions to the perfect soundtrack.</p>
-    </section>
+        <section>
+            <h2>How It Works</h2>
+            <p>MoodifyAI leverages cutting-edge artificial intelligence to analyze the emotional content of your photos. Our advanced algorithms detect subtle facial expressions and visual cues to determine your current mood with remarkable accuracy.</p>
+            <p>Once we've identified your emotional state, our sophisticated music mapping system selects the perfect songs from our extensive database to match your mood. Whether you're feeling joyful, contemplative, or energized, we'll find music that resonates with you.</p>
+        </section>
 
-    <section>
-        <h2>Our Mission</h2>
-        <p>The primary aim of MoodifyAI is to enhance the user's music experience by making it more personal and meaningful. In a world where music often serves as a therapeutic tool, our goal is to combine technology and creativity to create a seamless and personalized music recommendation system that resonates with users on an emotional level.</p>
-    </section>
+        <section>
+            <h2>Our Mission</h2>
+            <p>At MoodifyAI, we believe music has the power to transform emotions and enhance life experiences. Our mission is to bridge the gap between technology and human emotion, creating personalized musical journeys that uplift, comfort, and inspire.</p>
+            <p>We're committed to making music discovery more intuitive and meaningful by harnessing the power of AI while maintaining the human touch that makes music so special.</p>
+        </section>
 
-    <section class="developer">
-        <h2>About the Developer</h2>
-        <h3>Shivam Prasad</h3>
-        <p>I am a passionate developer with expertise in AI, machine learning, and web development. My inspiration for MoodifyAI came from the desire to combine my love for music with cutting-edge AI technologies to create something impactful and enjoyable for users.</p>
-        <p>As a developer,My goal is to solve real-world problems through innovative technological solutions.I enjoy exploring and building creative projects that challenge my skills.</p>
-        <button class="contact" onclick="window.location.href='https://www.linkedin.com/in/shivam-prasad1001'"> Contact Me</button>
-    </section>
+        <section class="developer-section">
+            <div class="developer-card">
+                <img src="https://media.licdn.com/dms/image/v2/D5635AQH_FFymXrdjQw/profile-framedphoto-shrink_400_400/profile-framedphoto-shrink_400_400/0/1731465392049?e=1744927200&v=beta&t=ns_qsAyILrCj2huzTPWgNtlXBb6e9K1niCKu45Fva-4" alt="Shivam Prasad" class="developer-image">
+                <h3>Shivam Prasad</h3>
+                <div class="developer-title">Creator & Developer</div>
+                <p>As a passionate developer with expertise in AI and web technologies, I created MoodifyAI to combine my love for music with innovative technology. My goal is to build solutions that make technology feel more human and accessible.</p>
+                <p>When I'm not coding, you'll find me exploring new music genres, contributing to open-source projects, or hiking in nature for inspiration.</p>
+                
+                <div class="social-links">
+                    <a href="https://github.com/shivamprasad1001" class="social-link" target="_blank">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/shivam-prasad1001/" class="social-link" target="_blank">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://twitter.com/yourhandle" class="social-link" target="_blank">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="mailto:shivamprasad1001@gmail.com" class="social-link" target="_blank">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+                
+                <button class="contact-button" onclick="window.location.href='https://www.linkedin.com/in/shivam-prasad1001'">
+                    <i class="fas fa-paper-plane"></i> Contact Me
+                </button>
+            </div>
+        </section>
+    </div>
 
     <footer>
-        <p>&copy; 2024 MoodifyAI. All rights reserved.</p>
+        <p>&copy; 2025 <a href="/" class="footer-mark">MoodifyAI</a>. All rights reserved.</p>
     </footer>
+
+    <script>
+        // Add interactive elements
+        document.querySelectorAll('section').forEach((section, index) => {
+            section.style.opacity = '0';
+            section.style.animationDelay = `${index * 0.1 + 0.1}s`;
+        });
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
 </html>
