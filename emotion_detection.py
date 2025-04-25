@@ -11,7 +11,7 @@ model_path = hf_hub_download(
     repo_id ="shivampr1001/Emo0.1",
     filename = "Emo0.1"
 )
-
+model = load_model(model_path)
 def detect_emotion(image_path):
     img = cv2.imread(image_path)
     img = cv2.resize(img, (48, 48))
