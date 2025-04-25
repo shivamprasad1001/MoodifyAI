@@ -1,14 +1,16 @@
-from textblob import TextBlob
-import os
-os.environ["TF_ENABLE_ONEDNN_OPTS"] = "0"
-import tensorflow as tf
 from tensorflow.keras.preprocessing.image import img_to_array
+from huggingface_hub import hf_hub_download
+from tensorflow.keres.models import load_model
+os.environ["TF_ENABLE_ONEDNN_OPTS"] = "0"
+from textblob import TextBlob
 import numpy as np
+import os
 import cv2
 
-
-# # Load pre-trained model
-model = tf.keras.models.load_model("models/facial_EmotionClassifer.h5")
+model_path = hf_hub_download(
+    repo_id ="shivampr1001/Emo0.1",
+    filename = "Emo0.1"
+)
 
 def detect_emotion(image_path):
     img = cv2.imread(image_path)
