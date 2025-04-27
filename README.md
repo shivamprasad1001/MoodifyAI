@@ -1,9 +1,9 @@
 
  # **MoodifyAI**
  **Home page**
- ![MoodifyAI Demo](https://raw.githubusercontent.com/shivamprasad1001/MoodifyAI/main/static/home.png)
+ ![MoodifyAI Demo](https://raw.githubusercontent.com/shivamprasad1001/MoodifyAI/main/static/Home.png)
  **Result page**
- ![MoodifyAI Result](https://github.com/shivamprasad1001/MoodifyAI/blob/main/static/result.png)
+ ![MoodifyAI Result](https://github.com/shivamprasad1001/MoodifyAI/blob/main/static/Result.png)
 
 An AI-powered music recommendation system that detects emotions from facial expressions and suggests songs tailored to the user's mood.
 
