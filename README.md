@@ -1,3 +1,8 @@
+## 🚀 Upcoming Features (v2 - Multimodal Support)
+
+- [ ] 🎤 Voice-based Emotion Detection using SpeechBrain
+- [ ] 🧠 Text-based Emotion Detection using Transformers
+- [ ] 🧩 Unified Web Interface with Face, Voice, and Text input options
 
  # **MoodifyAI**
  **Home page**
